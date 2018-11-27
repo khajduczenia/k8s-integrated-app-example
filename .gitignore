@@ -1,0 +1,45 @@
+.DS_Store
+
+### Java ###
+*.class
+*.log
+*.jar
+target
+
+### VS Code ###
+.vscode
+
+### Eclipse ###
+.settings
+
+### Gradle ###
+.gradle
+bin
+build
+gradle-app.setting
+gradle-wrapper.jar
+.gradletasknamecache
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+.idea_modules
+*.iws
+*.iml
+*.ipr
+out
+
+### NetBeans ###
+nbproject/private
+nbbuild
+dist
+nbdist
+.nb-gradle

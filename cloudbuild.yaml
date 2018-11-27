@@ -1,0 +1,14 @@
+steps:
+- id: 'api-build'
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/marketplace-examples/k8s-app/api', 'api' ]
+
+- id: 'billing-build'
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/marketplace-examples/k8s-app/billing-backend', 'billing-backend' ]
+  waitFor: ['-']
+
+
+images:
+- 'gcr.io/$PROJECT_ID/marketplace-examples/k8s-app/api'
+- 'gcr.io/$PROJECT_ID/marketplace-examples/k8s-app/billing-backend'

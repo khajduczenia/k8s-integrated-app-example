@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-app-config
+  labels:
+    app.kubernetes.io/name: k8s-app
+    app.kubernetes.io/component: config
+data:
+  rabbitmq.host: TBD
+  rabbitmq.port: "5672"
+  rabbitmq.username: TBD
+  rabbitmq.password: TBD
+
+  rabbitmq.topic.name: k8s-app.reports.topic
+  rabbitmq.billing.queue.name: k8s-app.billing.queue
+
+  postgresql.host: TBD
+  postgresql.port: "5432"
+  postgresql.database: TBD
+  postgresql.username: TBD
+  postgresql.password: TBD

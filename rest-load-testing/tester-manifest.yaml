@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-tester
+spec:
+  selector:
+    matchLabels: &AppLabels
+      app: load-tester
+  replicas: 1
+  template:
+    metadata:
+      labels: *AppLabels
+    spec:
+      containers:
+      - name: test-worker
+        image: gcr.io/cloud-marketplace-ops/marketplace-examples/k8s-app/alpline-curl
+        command:
+          - /bin/sh
+          - -c
+          - 'while true; do curl reports-api/reports/request; done'
+        resources:
+          limits:
+            cpu: 1m
+            memory: 4Mi
