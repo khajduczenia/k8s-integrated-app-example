@@ -10,6 +10,8 @@ We are going to deploy two open source applications offered on the Kubernetes Ma
 including two simple microservices on Google Kubernetes Engine and integrate it with the
 RabbitMQ and PostgreSQL installed from the Marketplace.
 
+![Architecture diagram](resources/app-diagram.png)
+
 ## Infrastructure setup
 
 ### Run RabbitMQ from GCP Marketplace
