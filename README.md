@@ -6,8 +6,9 @@ This is a Spring Boot based application designed to be run natively on Kubernete
 and show the capabilities of GCP Marketplace solutions.
 
 We are going to deploy two open source applications offered on the Kubernetes Marketplace
-(a part of GCP Marketplace) - RabbitMQ and PostgreSQL. Then will run this application with
-on Google Kubernetes Engine and integrate it with the ones deployed from the Marketplace.
+(a part of GCP Marketplace) - RabbitMQ and PostgreSQL. Then we will run this application
+including two simple microservices on Google Kubernetes Engine and integrate it with the
+RabbitMQ and PostgreSQL installed from the Marketplace.
 
 ## Infrastructure setup
 
