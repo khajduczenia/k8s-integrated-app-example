@@ -43,11 +43,46 @@ spec:
             configMapKeyRef:
               name: k8s-app-config
               key: rabbitmq.topic.name
-        - name: RABBITMQ_QUEUE_NAME
+        - name: RABBITMQ_REQUESTS_QUEUE_NAME
           valueFrom:
             configMapKeyRef:
               name: k8s-app-config
-              key: rabbitmq.billing.queue.name
+              key: rabbitmq.reports.requests.queue.name
+        - name: RABBITMQ_REPLIES_QUEUE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: rabbitmq.reports.replies.queue.name
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: postgresql.host
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: postgresql.host
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: postgresql.port
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: postgresql.database
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: postgresql.username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: postgresql.password
         resources:
           limits:
             cpu: "500m"

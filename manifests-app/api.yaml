@@ -43,6 +43,11 @@ spec:
             configMapKeyRef:
               name: k8s-app-config
               key: rabbitmq.topic.name
+        - name: RABBITMQ_REPLIES_QUEUE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-app-config
+              key: rabbitmq.reports.replies.queue.name
         ports:
         - name: rest-api
           containerPort: 8080

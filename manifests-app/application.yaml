@@ -23,7 +23,7 @@ spec:
     type: Reference
     valueFrom:
       serviceRef:
-        name: reports-api
+        name: k8s-app-api
   selector:
     matchLabels:
       app.kubernetes.io/name: k8s-app

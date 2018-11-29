@@ -16,6 +16,6 @@ data:
 
   postgresql.host: TBD
   postgresql.port: "5432"
-  postgresql.database: TBD
-  postgresql.username: TBD
+  postgresql.database: k8s-app
+  postgresql.username: k8s-app
   postgresql.password: TBD

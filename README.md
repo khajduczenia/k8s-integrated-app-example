@@ -19,8 +19,42 @@ RabbitMQ and PostgreSQL installed from the Marketplace.
 Navigate to [Click to Deploy RabbitMQ](https://console.cloud.google.com/marketplace/details/google/rabbitmq)
 Kubernetes application and follow the on-screen instructions to configure and install 
 a RabbitMQ cluster on Kubernetes.
- 
+
+#### (Optional) Create a dedicated user account
+
 You may create a dedicated RabbitMQ user account to be used for application integration.
+To create a user account, navigate to `http://[RABBITMQ_HOST]:15762/`, log in with username
+`rabbit` and the password taken from the application screen in GKE UI. In the `Admin` tab
+you can find the `Add a user` form.
+
+### Run PostgreSQL from GCP Marketplace
+
+Navigate to [Click to Deploy PostgreSQL](https://console.cloud.google.com/marketplace/details/google/postgresql)
+Kubernetes application and follow the on-screen instructions to configure and install 
+a PostgreSQL server on Kubernetes.
+
+#### Create a dedicated user account and a database
+
+Use the utility binaries shipped with with PostgreSQL installation to create
+a user account (`createuser`) and a database (`createdb`). You can read the
+`postgres` user password from the `Applications` screen of the GKE UI.
+
+```shell
+POSTGRES_HOST=...
+
+# Create a new user: k8s-app
+createuser -h "${POSTGRES_HOST}" -U postgres k8s-app
+
+# Create a new database: k8s-app
+createdb -h "${POSTGRES_HOST}" -U postgres k8s-app
+
+
+# Use psql to set user's password and grant permissions to the database
+psql -h "${POSTGRES_HOST}" -U postgres
+
+postgres=# ALTER USER "k8s-app" WITH ENCRYPTED PASSWORD '[CUSTOM_PASSWORD]';
+postgres=# GRANT ALL PRIVILEGES ON DATABASE "k8s-app" TO "k8s-app";
+```
 
 ### Configure local environment to run Kubernetes deployment
 
