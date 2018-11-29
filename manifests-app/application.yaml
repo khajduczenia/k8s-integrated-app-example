@@ -29,6 +29,8 @@ spec:
       app.kubernetes.io/name: k8s-app
   componentKinds:
   - group: v1
+    kind: ConfigMap
+  - group: v1
     kind: Service
   - group: apps/v1
     kind: Deployment

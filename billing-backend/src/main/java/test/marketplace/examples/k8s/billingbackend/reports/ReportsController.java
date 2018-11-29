@@ -6,6 +6,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import test.marketplace.examples.k8s.api.reports.UsageReport;
+import test.marketplace.examples.k8s.api.reports.UsageReportRequest;
 import test.marketplace.examples.k8s.billingbackend.usage.IUsageInfoService;
 
 import java.math.BigDecimal;

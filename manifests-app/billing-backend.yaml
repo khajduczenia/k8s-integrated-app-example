@@ -14,7 +14,7 @@ spec:
       labels: *AppLabels
     spec:
       containers:
-      - name: api
+      - name: billing-backend
         image: gcr.io/cloud-marketplace-ops/marketplace-examples/k8s-app/billing-backend
         imagePullPolicy: Always
         env:

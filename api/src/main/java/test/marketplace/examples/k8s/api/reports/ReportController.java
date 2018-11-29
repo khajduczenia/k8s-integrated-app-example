@@ -1,6 +1,7 @@
 package test.marketplace.examples.k8s.api.reports;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +31,13 @@ public class ReportController {
         sender.sendReportRequest(request);
     }
 
-    @GetMapping("/request-async/{resource}")
+    @GetMapping("/request-async/{resource}/{start}/{end}")
     public CompletableFuture<UsageReport> requestAsync(
-            @PathVariable String resource) {
-        Date start = Date.from(LocalDate.of(2018, 1, 1).atStartOfDay(ZoneId.of("UTC")).toInstant());
-        Date end = Date.from(LocalDate.of(2019, 1, 1).atStartOfDay(ZoneId.of("UTC")).toInstant());
+            @PathVariable String resource,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date start,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date end) {
+//        Date start = Date.from(LocalDate.of(2018, 1, 1).atStartOfDay(ZoneId.of("UTC")).toInstant());
+//        Date end = Date.from(LocalDate.of(2019, 1, 1).atStartOfDay(ZoneId.of("UTC")).toInstant());
         UsageReportRequest request = UsageReportRequest.builder()
                 .resource(resource)
                 .start(start)

@@ -4,12 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Value;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Value
 @Builder
-public class UsageReport {
+public class UsageReport implements Serializable {
 
     private String resource;
     private Date start;
