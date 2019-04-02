@@ -56,6 +56,30 @@ postgres=# ALTER USER "k8s-app" WITH ENCRYPTED PASSWORD '[CUSTOM_PASSWORD]';
 postgres=# GRANT ALL PRIVILEGES ON DATABASE "k8s-app" TO "k8s-app";
 ```
 
+#### Populate the database with data
+
+```shell
+# Connect to the database
+psql -h "${POSTGRES_HOST}" -U k8s-app
+
+```
+
+Execute the SQL script:
+
+```sql
+CREATE TABLE IF NOT EXISTS usage_info(
+  usage_date timestamp,
+  resource varchar(100),
+  usage decimal(12, 4)
+);
+          
+INSERT INTO usage_info(usage_date, resource, usage) VALUES ('2018-12-01 10:00:00', 'cluster1', 20.213);
+INSERT INTO usage_info(usage_date, resource, usage) VALUES ('2018-12-01 10:01:00', 'cluster1', 121.3);
+INSERT INTO usage_info(usage_date, resource, usage) VALUES ('2018-12-01 10:02:00', 'cluster1', 19.1233);
+INSERT INTO usage_info(usage_date, resource, usage) VALUES ('2018-12-01 10:02:00', 'cluster2', 1.3212);
+INSERT INTO usage_info(usage_date, resource, usage) VALUES ('2018-12-01 10:03:00', 'cluster2', 10);
+```
+
 ### Configure local environment to run Kubernetes deployment
 
 We will use the Kubernetes cluster where RabbitMQ was deployed to run the deployment
@@ -85,7 +109,7 @@ Edit `manifests-setup/marketplace-env.yaml` to store the proper information
 pointing to the RabbitMQ cluster. Run the creation of the ConfigMap:
 
 ```shell
-kubectl apply -n k8s-app -f manifests-setup/marketplafce-env.yaml
+kubectl apply -n k8s-app -f manifests-setup/marketplace-env.yaml
 ```
 
 ### Build the application containers
@@ -93,8 +117,10 @@ kubectl apply -n k8s-app -f manifests-setup/marketplafce-env.yaml
 Build the containers with cloud build and push them automatically to Google Container Registry:
 
 ```shell
-gcloud builds submit .
+gcloud builds submit . --substitutions _APP_VERSION=[APP_VERSION]
 ```
+
+Where [APP_VERSION] is the tag to be attached to the images.
 
 ### Run the installation of your app in K8s
 

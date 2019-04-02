@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: test-worker
-        image: gcr.io/cloud-marketplace-ops/marketplace-examples/k8s-app/alpline-curl
+        image: gcr.io/cloud-marketplace-ops/k8s-app/alpline-curl
         command:
           - /bin/sh
           - -c

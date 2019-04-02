@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: gcr.io/cloud-marketplace-ops/marketplace-examples/k8s-app/api
+        image: gcr.io/gkeoplabs-1stparty-mp-3/k8s-app/api
         imagePullPolicy: Always
         env:
         - name: RABBITMQ_HOST
@@ -65,11 +65,33 @@ metadata:
     app.kubernetes.io/component: api
 spec:
   type: LoadBalancer
+  loadBalancerIP: 10.0.10.251
   ports:
     - name: rest-api
       port: 80
       targetPort: 8080
   selector: *AppLabels
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/app-root: /
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+  labels:
+    app.kubernetes.io/name: k8s-app
+    app.kubernetes.io/component: api-ingress
+  name: k8s-app-api-ingress
+spec:
+  rules:
+  - host: 147.75.201.84.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: k8s-app-api
+          servicePort: 80
+        path: /
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler

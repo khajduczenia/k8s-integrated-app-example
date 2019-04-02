@@ -6,6 +6,9 @@ apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
   name: k8s-app
+  annotations:
+    kubernetes-engine.cloud.google.com/icon: >-
+      data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAABH0lEQVR4AezBMQgBYQCG4berGxhkYpNN2W6w3T6z1+3FHnuyx163F3sM9uUmZZONiUXq6voYDAYJjvuv/ufhRyzL8lhee+RSkym6ndEgV+qEJOhuQkiNXKgyJkYPxkyoYLQyQ87oyRMjShipSJ8jeuGBAQWM4tJlj964o4eLERwCtuiDGwIcMtZmjb64okNmfCKUwgifv2sxRyleXNq1QyOAYRgIgmkp/ReXQHHPjcZgX9Rk0RE/73Zj+5terzU2uLVeT2O7C3odNLa9vtfT2O7KXveNLW963Te2v7rX09j+ul4Hje0v6PV36QH0BwAAAGBmZnYatrX3AAAAAAAAAAAAAAAAAAAAAAAAAAABwMzMzG8VAAAAAAAAAAAzM7MfAPXLzthpPW8AAAAASUVORK5CYII=
   labels:
     app.kubernetes.io/name: k8s-app
 spec:
@@ -36,3 +39,5 @@ spec:
     kind: Deployment
   - group: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
+  - apiVersion: extensions/v1beta1
+    kind: Ingress

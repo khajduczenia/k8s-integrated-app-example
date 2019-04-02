@@ -1,0 +1,9 @@
+steps:
+- id: 'api-build'
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/k8s-app/api:$TAG_NAME', 'api' ]
+
+- id: 'api-push'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/k8s-app/api:$TAG_NAME"]
+  waitFor: ['api-build']

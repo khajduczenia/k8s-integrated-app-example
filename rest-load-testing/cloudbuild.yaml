@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/marketplace-examples/k8s-app/alpline-curl', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/k8s-app/alpline-curl', '.' ]
 images:
-- 'gcr.io/$PROJECT_ID/marketplace-examples/k8s-app/alpline-curl'
+- 'gcr.io/$PROJECT_ID/k8s-app/alpline-curl'

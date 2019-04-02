@@ -12,7 +12,8 @@ data:
   rabbitmq.password: TBD
 
   rabbitmq.topic.name: k8s-app.reports.topic
-  rabbitmq.billing.queue.name: k8s-app.billing.queue
+  rabbitmq.reports.requests.queue.name: k8s-app.reports.requests.queue
+  rabbitmq.reports.replies.queue.name: k8s-app.reports.replies.queue
 
   postgresql.host: TBD
   postgresql.port: "5432"

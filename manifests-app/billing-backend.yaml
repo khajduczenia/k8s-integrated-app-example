@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: billing-backend
-        image: gcr.io/cloud-marketplace-ops/marketplace-examples/k8s-app/billing-backend
+        image: gcr.io/gkeoplabs-1stparty-mp-3/k8s-app/billing-backend
         imagePullPolicy: Always
         env:
         - name: RABBITMQ_HOST
