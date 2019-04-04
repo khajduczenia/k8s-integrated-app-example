@@ -1,7 +1,7 @@
 steps:
 - id: 'backend-build'
   name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/k8s-app/billing-backend:$TAG_NAME', 'api' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/k8s-app/billing-backend:$TAG_NAME', 'billing-backend' ]
 
 - id: 'backend-push'
   name: 'gcr.io/cloud-builders/docker'
